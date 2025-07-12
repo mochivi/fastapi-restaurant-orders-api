@@ -15,5 +15,5 @@ class BaseRepository[T](ABC):
         ...
     
     @abstractmethod
-    def delete(self, id: int) -> T:
+    def delete(self, id: int) -> None:
         ...

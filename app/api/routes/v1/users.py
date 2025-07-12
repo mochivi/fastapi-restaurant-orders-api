@@ -29,7 +29,7 @@ def create(
     user_create: UserCreate,
     user_service: UserServiceDep
 ) -> Any:
-    ...
+    return user_service.create(user_create)
 
 
 @router.patch(
@@ -42,17 +42,16 @@ def update(
     user_update: UserUpdate,
     user_service: UserServiceDep
 ) -> Any:
-    ...
+    return user_service.update(user_update)
 
 
 @router.delete(
     path="/{id}",
-    status_code=status.HTTP_200_OK,
+    status_code=status.HTTP_204_NO_CONTENT,
     summary="Delete a user",
 )
 def delete(
     user_id: int,
     user_service: UserServiceDep
 ) -> None:
-    ...
-
+    user_service.delete(user_id)
