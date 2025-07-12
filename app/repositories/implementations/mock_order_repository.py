@@ -14,6 +14,6 @@ class MockOrderRepository(BaseOrderRepository):
     def update(self, item: Order) -> Order:
         ...
     
-    def delete(self, id: int) -> Order:
+    def delete(self, id: int) -> None:
         ...
 

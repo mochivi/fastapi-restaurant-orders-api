@@ -9,10 +9,11 @@ class RestaurantCreate(RestaurantBase):
     pass
 
 class RestaurantUpdate(BaseModel):
+    id: int
     name: str | None = None
 
 class RestaurantResponse(RestaurantBase):
     id: int
-    menu_item_ids: list[int]
+    menu_item_ids: list[int] | None = None
 
     model_config = ConfigDict(from_attributes=True)

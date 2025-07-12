@@ -14,5 +14,5 @@ class MockMenuItemRepository(BaseMenuItemRepository):
     def update(self, item: MenuItem) -> MenuItem:
         ...
     
-    def delete(self, id: int) -> MenuItem:
+    def delete(self, id: int) -> None:
         ...

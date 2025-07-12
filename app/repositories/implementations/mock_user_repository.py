@@ -1,8 +1,8 @@
 from app.repositories.interfaces.user_repository import BaseUserRepository
-from app.models.domain.user import User
-from app.models.domain.exceptions.exceptions import UserNotFoundException, UserAlreadyExistsException
 
-_users: dict[int, User] = {}
+from app.models.domain.exceptions.exceptions import UserNotFoundException, UserAlreadyExistsException
+from app.models.domain.user import User
+from app.repositories.implementations.db_mock import _users
 
 class MockUserRepository(BaseUserRepository):
     def get(self, id: int) -> User:
