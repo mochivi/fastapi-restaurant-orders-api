@@ -2,7 +2,6 @@ from app.models.domain.order import Order
 from app.models.enums import OrderStatus
 from app.models.schemas.order import RestaurantOrderCreate
 from app.repositories.dependencies import MockMenuItemRepositoryDep, MockOrderRepositoryDep, MockRestaurantRepositoryDep, MockUserRepositoryDep
-from app.repositories.interfaces import user_repository
 
 class RestaurantOrderService:
     def __init__(

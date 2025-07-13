@@ -2,7 +2,7 @@ from pydantic import BaseModel, Field
 
 
 def _id_generator():
-    i = 0
+    i = 1
     while True:
         yield i
         i+=1

@@ -11,7 +11,7 @@ class RestaurantOrderCreate(OrderBase):
     user_id: int
     menu_item_ids: list[int]
 
-class OrderUpdate():
+class OrderUpdate(BaseModel):
     id: int
     status: OrderStatus | None = None
 

@@ -9,7 +9,7 @@ router = APIRouter(prefix="/restaurants", tags=["Restaurant"])
 
 
 @router.get(
-    path="/{id}",
+    path="/{restaurant_id}",
     summary="Get a restaurant",
     status_code=status.HTTP_200_OK,
     response_model=RestaurantResponse
@@ -47,7 +47,7 @@ def update(
     return restaurant_service.update(restaurant_update)
 
 @router.delete(
-    path="/{id}",
+    path="/{restaurant_id}",
     summary="Delete a restaurant",
     status_code=status.HTTP_200_OK,
 )

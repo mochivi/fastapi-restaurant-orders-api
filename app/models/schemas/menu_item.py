@@ -13,7 +13,7 @@ class MenuItemUpdate(BaseModel):
     id: int
     title: str | None = Field(default=None, max_length=100)
     description: str | None = Field(default=None, max_length=1000)
-    price: str | None = Field(default=None, gt=0)
+    price: float | None = Field(default=None, gt=0)
 
 class MenuItemResponse(MenuItemBase):
     id: int
