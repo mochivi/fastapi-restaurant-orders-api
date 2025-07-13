@@ -3,6 +3,12 @@ from app.models.domain.exceptions.interfaces import NotFoundException, ConflictE
 class UserNotFoundException(NotFoundException):
     _context: str = "User"
 
+    def __init__(self, id: int | None = None, email: str | None = None, *args: object) -> None:
+        if id is not None:
+            super().__init__(id, *args)
+        elif email is not None:
+            super().__init__(None, f"User with email {email} not found")
+
 class RestaurantNotFoundException(NotFoundException):
     _context: str = "Restaurant"
 

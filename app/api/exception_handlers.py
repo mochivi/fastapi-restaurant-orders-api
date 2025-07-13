@@ -1,7 +1,7 @@
 from fastapi import Request, status
 from fastapi.responses import JSONResponse
 from app.models.domain.exceptions.interfaces import ConflictException, NotFoundException
-from app.services.exceptions.interfaces import BadRequestException
+from app.services.exceptions.interfaces import BadRequestException, UnauthorizedException
 
 async def not_found_handler(request: Request, exc: NotFoundException) -> JSONResponse:
     return JSONResponse(
@@ -29,5 +29,14 @@ async def bad_request_handler(request: Request, exc: BadRequestException) -> JSO
         content={
             "error": "bad request",
             "message": str(exc),
+        }
+    )
+
+async def unauthorized_handler(request: Request, exc: UnauthorizedException) -> JSONResponse:
+    return JSONResponse(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        content={
+            "error": "unauthorized",
+            "message": str(exc)
         }
     )

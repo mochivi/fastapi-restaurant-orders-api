@@ -10,7 +10,13 @@ class MockUserRepository(BaseUserRepository):
         if not user:
             raise UserNotFoundException(id)
         return user
-    
+
+    def get_by_email(self, email: str) -> User:
+        for user in _users.values():
+            if user.email == email:
+                return user
+        raise UserNotFoundException(None, email=email)
+        
     def create(self, item: User) -> User:
         user: User | None = _users.get(item.id, None)
         if user:

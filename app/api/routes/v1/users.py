@@ -3,7 +3,7 @@ from typing import Any
 from fastapi import APIRouter, status
 
 from app.models.schemas.user import UserCreate, UserResponse, UserUpdate
-from app.api.dependencies import UserServiceDep
+from app.api.dependencies import CurrentUserDep, UserServiceDep
 
 router: APIRouter = APIRouter(prefix="/users", tags=["Users"])
 
@@ -15,7 +15,8 @@ router: APIRouter = APIRouter(prefix="/users", tags=["Users"])
 )
 def get(
     user_id: int,
-    user_service: UserServiceDep
+    user_service: UserServiceDep,
+    current_user: CurrentUserDep
 ) -> Any:
     return user_service.get(user_id)
 
