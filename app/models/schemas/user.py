@@ -14,7 +14,7 @@ class UserUpdate(BaseModel):
     id: int
     password: str | None = None
     email: EmailStr | None = None
-    name: str | None = None
+    name: str | None = Field(default=None, max_length=255)
     role: UserRole | None = None
 
 class UserResponse(UserBase):

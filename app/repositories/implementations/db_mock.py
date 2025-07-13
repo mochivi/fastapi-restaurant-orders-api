@@ -6,4 +6,4 @@ from app.models.domain.menu_item import MenuItem
 _users: dict[int, User] = {}
 _restaurants: dict[int, Restaurant] = {}
 _orders: dict[int, Order] = {}
-_menu_items: dict[int, MenuItem]
+_menu_items: dict[int, MenuItem] = {}

@@ -19,12 +19,11 @@ class RestaurantService:
 
     def create(self, restaurant_create: RestaurantCreate) -> Restaurant:
         try:
-            user = self.user_repository.get(restaurant_create.owner_id)
-        except UserNotFoundException:
-            raise BadRequestException("trying to create restaurant under non-existent user")
+            _ = self.user_repository.get(restaurant_create.owner_id)
+        except UserNotFoundException as e:
+            raise BadRequestException(f"Owner with id {restaurant_create.owner_id} does not exist") from e
 
         restaurant_create_dump = restaurant_create.model_dump()
-        print(restaurant_create_dump)
         db_restaurant: Restaurant = Restaurant(**restaurant_create_dump, menu_item_ids=None)
         
         return self.restaurant_repository.create(db_restaurant)

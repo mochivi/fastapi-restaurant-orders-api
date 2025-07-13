@@ -10,7 +10,7 @@ class RestaurantCreate(RestaurantBase):
 
 class RestaurantUpdate(BaseModel):
     id: int
-    name: str | None = None
+    name: str | None = Field(default=None, max_length=255)
 
 class RestaurantResponse(RestaurantBase):
     id: int

@@ -3,18 +3,19 @@ from pydantic import BaseModel, ConfigDict
 from app.models.enums import OrderStatus
 
 
-class RestaurantOrderBase(BaseModel):
+class OrderBase(BaseModel):
     pass
 
-class RestaurantOrderCreate(RestaurantOrderBase):
-    total_price: float
+# Used in /restaurants/{restaurant_id}/create
+class RestaurantOrderCreate(OrderBase):
     user_id: int
     menu_item_ids: list[int]
 
-class RestaurantOrderUpdate():
+class OrderUpdate():
+    id: int
     status: OrderStatus | None = None
 
-class RestaurantOrderResponse(RestaurantOrderBase):
+class OrderResponse(OrderBase):
     id: int
     restaurant_id: int
     user_id: int
